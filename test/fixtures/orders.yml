@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  buyers_detail: MyString
+  payment_detail: MyString
+  shipping_status: MyString
+  line_item_id: 1
+
+two:
+  buyers_detail: MyString
+  payment_detail: MyString
+  shipping_status: MyString
+  line_item_id: 1

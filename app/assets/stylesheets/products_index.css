@@ -1,0 +1,24 @@
+tr:nth-child(even) {background: #E4E4E4}
+tr:nth-child(odd) {background: 	#F0B6CD}
+
+table{
+	width:50%;
+	border-spacing:0;
+}
+
+tr{
+	height:20px;
+}
+
+.image{
+	padding:5px
+}
+
+.description{
+	width: 400px;
+	height: 30px;
+	text-align: justify;
+	padding: 3px;
+	overflow: hidden;
+	word-wrap: break-word;"
+}
