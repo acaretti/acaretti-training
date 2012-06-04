@@ -1,10 +1,10 @@
 <%= stylesheet_link_tag "products_index" %>
 <h1>Listing products</h1>
 
-<table >
+<table class="productTable">
 
 <% @products.each do |product| %>
-  <tr>
+  <tr class="change">
 	<td class="image" ><img title="" width="80px" height="100px" src="<%= product.image %>" /></td>
     <td valign="top">
 		<h2>

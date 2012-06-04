@@ -1,0 +1,28 @@
+.main{
+	width: 50%;
+	border-bottom: 1px dotted blue;
+	padding-bottom:15px;
+	padding-top: 10px;
+}
+
+.catalogImage{
+	margin-top:10px;
+	float:left;
+}
+
+.inner{
+	margin-left:80px;
+	padding-left:5px;
+	position: relative;
+}
+
+.mainHr{
+	border:2px dotted;
+	margin-left:0px;
+	color:green;
+}
+
+.price{
+	color: blue;
+}
+

@@ -1,12 +1,12 @@
-tr:nth-child(even) {background: #E4E4E4}
-tr:nth-child(odd) {background: 	#F0B6CD}
+tr.change:nth-child(even) {background: #E4E4E4}
+tr.change:nth-child(odd) {background: 	#F0B6CD}
 
-table{
+table.productTable{
 	width:50%;
 	border-spacing:0;
 }
 
-tr{
+tr.change{
 	height:20px;
 }
 
@@ -20,5 +20,5 @@ tr{
 	text-align: justify;
 	padding: 3px;
 	overflow: hidden;
-	word-wrap: break-word;"
+	word-wrap: break-word;
 }

@@ -6,9 +6,21 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body >
+<div id="banner">
+	<%=image_tag "logo.png", :class => "header"%>
+	<h1 id="title">Pragmatic Bookshelf</h1>
+</div>
+<div id="container" >
+	<div id="sidebar" >
+		<a href="" class="link">Home</a><br/>
+		<a href="" class="link">Questions</a><br/>
+		<a href="" class="link">News</a><br/>
+		<a href="" class="link">Contact</a>
+	</div>
+	<div id="content">
+		<%= yield %>
+	</div>
+</div>
 </body>
 </html>

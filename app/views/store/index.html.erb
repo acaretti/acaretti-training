@@ -1,0 +1,16 @@
+<h1>Your Pragmatic Catalog</h1>
+<hr width="50%" class="mainHr"/>
+<% @products.each do |product| %>
+	<div class="main">
+      <img title="" width="80px" height="100px" class="catalogImage" src="<%= product.image %>" />
+      <div class="inner" >
+  	    <h2 class="title">
+			<b><%= product.name%></b>
+		</h2>
+		<p>
+			<%= product.description %>
+		</p>
+		<b><span class="price"><%= number_to_currency(product.price) %></span></b>
+      </div>
+	</div>
+<% end %>
