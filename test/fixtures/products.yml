@@ -1,13 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  description: MyString
-  image: MyString
+  name: MyString2
+  description: MyString2
+  image: http.MyString.gif
   price: 9.99
 
 two:
-  name: MyString
+  name: MyString34
   description: MyString
-  image: MyString
+  image: http.MyString.gif
+  price: 9.99
+
+three:
+  name: MyString33
+  description: MyString3
+  image: http.MyString2.gif
   price: 9.99
