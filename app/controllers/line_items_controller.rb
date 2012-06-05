@@ -40,9 +40,10 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    @line_item = LineItem.new(params[:line_item])
-
-    respond_to do |format|
+    product = Product.find(params[:product_id])
+    if product == nil   
+      @line_item = LineItem.new(params[:line_item])
+      respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item, notice: 'Line item was successfully created.' }
         format.json { render json: @line_item, status: :created, location: @line_item }
@@ -51,6 +52,20 @@ class LineItemsController < ApplicationController
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
+    else
+      cart = current_cart
+      @line_item = LineItem.new(:product_id => product.id, :price => product.price, :quantity => 1, :carts_id => cart.id)
+      respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to cart, notice: 'Line item was successfully created.' }
+        format.json { render json: cart, status: :created, location: cart }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+    end  
+
   end
 
   # PUT /line_items/1
@@ -80,4 +95,15 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+end
+
+def current_cart
+  @cart = Cart.first
+  
+  if @cart == nil
+    @cart = Cart.new
+    @cart.save
+  end
+  
+  @cart
 end
