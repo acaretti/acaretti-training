@@ -1,0 +1,16 @@
+<h1>Your Pragmatic Cart</h1>
+
+<table>
+	<% @cart.line_items.each do |item| %>
+		<tr>
+			<td ><%= item.quantity %>x</td>
+			<td><%= item.product.name %></td>
+			<td class="cartprice"><%= number_to_currency(item.price) %></td>
+		<tr>
+	<% end %>
+	<tr class="total_line">
+    	<td colspan="2"></td>
+    	<td class="total_cell">Total <%= number_to_currency(@total) %></td>
+  	</tr>
+</table>
+<%= button_to 'Empty cart', @cart, :method => :delete, :confirm => 'Are you sure?' %>

@@ -40,8 +40,7 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    product = Product.find(params[:product_id])
-    if product == nil   
+    if params[:product_id].nil?
       @line_item = LineItem.new(params[:line_item])
       respond_to do |format|
       if @line_item.save
@@ -53,12 +52,13 @@ class LineItemsController < ApplicationController
       end
     end
     else
-      cart = current_cart
-      @line_item = LineItem.new(:product_id => product.id, :price => product.price, :quantity => 1, :carts_id => cart.id)
+      product = Product.find(params[:product_id])
+      saved = add_product product
       respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to cart, notice: 'Line item was successfully created.' }
-        format.json { render json: cart, status: :created, location: cart }
+      if saved
+        #redirect_to :action=>"index"
+        format.html { redirect_to @cart, notice: 'Line item was successfully added to the cart.' }
+        #format.json { render json: cart, status: :created, location: cart }
       else
         format.html { render action: "new" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
@@ -98,12 +98,25 @@ class LineItemsController < ApplicationController
 end
 
 def current_cart
-  @cart = Cart.first
+  @cart = Carts.first
   
   if @cart == nil
-    @cart = Cart.new
+    @cart = Carts.new
     @cart.save
   end
   
   @cart
+end
+
+def add_product(product)
+  line = LineItem.where(:product_id => product.id)
+  line_item = line[0]
+  @cart = current_cart
+  if !line_item.nil?
+    line_item.quantity += 1
+    line_item.price = line_item.quantity * product.price
+  else
+    line_item = LineItem.new(:product_id => product.id, :price => product.price, :quantity => 1, :carts_id => @cart.id)
+  end
+    line_item.save
 end

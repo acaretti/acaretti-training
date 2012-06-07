@@ -5,9 +5,9 @@ Trining::Application.routes.draw do
 
   resources :products
   
-  resources :cart
+  resources :carts
   
-  resources :store
+  resources :stores
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,7 +58,7 @@ Trining::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'store#index'
+  root :to => 'store#index', :as => 'store'
 
   # See how all your routes lay out with "rake routes"
 
